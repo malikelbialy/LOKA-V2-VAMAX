@@ -1,30 +1,30 @@
-# Loka MR — المرحلة 1
+# LOKA-V2-VAMAX — Stage 1
 
-تطبيق أندرويد يحوّل الموبايل + نضارة VR إلى واقع مختلط:
-كاميرا (passthrough) ← شاشة مقسومة لكل عين ← تشويه العدسات ← تتبع ARCore ← نوافذ ثابتة في الغرفة ← تحكم بالنظر (gaze + dwell).
+An Android app that turns your phone and a VR viewer into a mixed reality headset:
+camera passthrough → one picture per eye → lens distortion → ARCore tracking → windows fixed in the room → gaze control (gaze + dwell).
 
-## الحصول على الـ APK (من غير Android Studio)
-1. اعمل repo جديد على GitHub وارفع محتوى المجلد ده كله (مع `.github`).
-2. افتح تبويب **Actions** ← **Build APK** ← انتظر ~4 دقايق.
-3. نزّل الـ artifact اسمه **LokaMR-apk** وفك الضغط، هتلاقي `app-debug.apk`.
-4. ثبّته على الموبايل (اسمح بالتثبيت من مصدر خارجي).
+## Get the APK (no Android Studio needed)
+1. Create a new GitHub repository and upload everything in this folder, including `.github`.
+2. Open the **Actions** tab → **Build APK** → wait about 4 minutes.
+3. Download the artifact named **LokaMR-apk**, unzip it, and you will find `app-debug.apk`.
+4. Install it on your phone (allow installs from unknown sources).
 
-## التشغيل
-- الموبايل لازم يدعم ARCore، وهيطلب منك تثبيت "Google Play Services for AR" لو مش موجود.
-- حط الموبايل في النضارة، وحرّك راسك ببطء 3-4 ثواني لحد ما تظهر النوافذ.
-- بصّ على أي مربع في اللوحة **1.2 ثانية** وهو يتنفذ.
+## Running it
+- Your phone must support ARCore. If "Google Play Services for AR" is missing, the app asks you to install it.
+- Put the phone in the viewer and move your head slowly for 3–4 seconds until the windows appear.
+- Look at any tile on the panel for **1.2 seconds** to activate it.
 
-| المربع | وظيفته |
+| Tile | What it does |
 |---|---|
-| إعادة التمركز | يرجّع النوافذ قدام وشك |
-| المسافة بين العينين | 58 / 60 / 63 / 66 / 69 مم |
-| العدسة | خفيف / قياسي / قوي (قوة التشويه) |
-| المتصفح، يوتيوب، الأوامر الصوتية | للمرحلة القادمة |
+| Recenter | Brings the windows back in front of you |
+| IPD (eye distance) | 58 / 60 / 63 / 66 / 69 mm |
+| Lens | Mild / Standard / Strong (distortion strength) |
+| Browser, YouTube, Voice | Coming in the next stages |
 
-أزرار الصوت: **رفع** = إعادة تمركز، **رفع مطوّل** = المسافة بين العينين، **خفض** = العدسة.
+Volume keys: **Up** = recenter, **long-press Up** = eye distance, **Down** = lens.
 
-## الملفات
-- `StereoRenderer.kt` القلب: الكاميرا والنوافذ والعينين والتشويه
-- `Ui.kt` اللوحات (الـ launcher والحالة)
-- `Tuning.kt` القيم القابلة للضبط
-- `MainActivity.kt` جلسة ARCore والصلاحيات والأزرار
+## Files
+- `StereoRenderer.kt`: the core: camera, windows, both eyes and distortion
+- `Ui.kt`: the panels (launcher and status)
+- `Tuning.kt`: values you can adjust
+- `MainActivity.kt`: ARCore session, permissions and keys
